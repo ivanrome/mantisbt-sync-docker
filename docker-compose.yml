@@ -32,9 +32,9 @@ mantisbt-sync-cron:
         - BASE_URL=http://mantisbt-sync-core:8080/batch
         - SCHEDULE=@every 6h
         - COMMAND=/mantis-sync-cron/tasks.sh syncIssuesJob
-	- MANTIS_USERNAME=
-	- MANTIS_PASSWORD=
-	- MANTIS_PROJECT_ID=
+        - MANTIS_USERNAME=
+        - MANTIS_PASSWORD=
+        - MANTIS_PROJECT_ID=
     ports:
         - "18080"
     links:
