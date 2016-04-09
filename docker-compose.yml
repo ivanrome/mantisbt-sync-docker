@@ -1,0 +1,27 @@
+mantisbt-sync-core:
+    build: ./core/
+    environment:
+        - SPRING_DATASOURCE_PLATFORM=mysql
+        - SPRING_DATASOURCE_URL=jdbc:mysql://mantisbt-sync-mysql:3306/mantisbt
+        - SPRING_DATASOURCE_USERNAME=mantisbt
+        - SPRING_DATASOURCE_PASSWORD=mantisbt
+        - MANTIS_ENDPOINT=
+        - MANTIS_AUTH_FILEPATH=
+    volumes:
+        - /var/opt/applications/mantis-sync/core/batch/data/:/shared/data
+    ports:
+        - "8080"
+    links:
+        - mantisbt-sync-mysql
+            
+mantisbt-sync-mysql:
+    image: mysql:latest
+    environment:
+        - MYSQL_ROOT_PASSWORD=mantisbt
+        - MYSQL_DATABASE=mantisbt
+        - MYSQL_USER=mantisbt
+        - MYSQL_PASSWORD=mantisbt
+    volumes:
+        - /var/opt/applications/mantis-sync/core/mysql/:/var/lib/mysql
+    ports:
+        - "3306"
