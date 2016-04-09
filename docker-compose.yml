@@ -25,3 +25,17 @@ mantisbt-sync-mysql:
         - /var/opt/applications/mantis-sync/core/mysql/:/var/lib/mysql
     ports:
         - "3306"
+
+mantisbt-sync-cron:
+    build: ./cron/
+    environment:
+        - BASE_URL=http://mantisbt-sync-core:8080/batch
+        - SCHEDULE=@every 6h
+        - COMMAND=/mantis-sync-cron/tasks.sh syncIssuesJob
+	- MANTIS_USERNAME=
+	- MANTIS_PASSWORD=
+	- MANTIS_PROJECT_ID=
+    ports:
+        - "18080"
+    links:
+        - mantisbt-sync-core
