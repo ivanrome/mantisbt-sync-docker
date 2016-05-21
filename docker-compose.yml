@@ -7,6 +7,7 @@ mantisbt-sync-core:
         - SPRING_DATASOURCE_PASSWORD=mantisbt
         - MANTIS_ENDPOINT=
         - MANTIS_AUTH_FILEPATH=
+    command: [-Xmx256m]
     volumes:
         - /var/opt/applications/mantis-sync/core/batch/data/:/shared/data
     ports:
