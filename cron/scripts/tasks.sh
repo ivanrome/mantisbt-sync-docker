@@ -61,7 +61,7 @@ function lauchSyncProjects {
 
 }
 
-function lauchSyncProjects {
+function lauchSyncIssues {
 
 	echo "Launch syncIssuesJob with parameters username=$MANTIS_USERNAME, password=$MANTIS_PASSWORD, project_id=$MANTIS_PROJECT_ID"
 
