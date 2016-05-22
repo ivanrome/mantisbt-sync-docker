@@ -23,28 +23,6 @@ function checkVariables {
 	fi
 }
 
-function wait_until_no_run {
-
-	IS_RUNNING=1
-	TIME=0
-
-	while [ $IS_RUNNING -ne 0 ] && [ $TIME -lt 600 ]; do
-		RUNNING_JOBS=`curl --silent -X GET $BASE_URL/monitoring/jobs/runningexecutions`
-		if [ $RUNNING_JOBS = "[]" ]; then
-			IS_RUNNING=0
-		else
-			IS_RUNNING=1
-			sleep 10
-			TIME=$(( $TIME + 10))
-		fi
-	done
-
-	if [ $TIME -ge 600 ]; then
-		echo "Abort launch after 600s wait because another job is running"
-		exit 1
-	fi
-}
-
 function lauchSyncEnums {
 
 	echo "[INFO] Launch syncEnumsJob with parameters username=$MANTIS_USERNAME, password=$MANTIS_PASSWORD"
@@ -71,7 +49,6 @@ function lauchSyncIssues {
 
 function lauchOperation {
 
-	wait_until_no_run
 	if [ "syncEnumsJob" = $OPERATION ]; then
 		lauchSyncEnums
 	elif [ "syncProjectsJob" = $OPERATION ]; then
