@@ -25,25 +25,25 @@ function checkVariables {
 
 function lauchSyncEnums {
 
-	echo "[INFO] Launch syncEnumsJob with parameters username=$MANTIS_USERNAME, password=$MANTIS_PASSWORD"
+	echo "[INFO] Launch syncEnumsJob with parameters username=$MANTIS_USERNAME"
 
-	curl --silent -X POST "$BASE_URL/operations/jobs/syncEnumsJob" --data "jobParameters=mantis.username=$MANTIS_USERNAME,mantis.password=$MANTIS_PASSWORD" > /dev/null
+	curl --silent --show-error -X POST "$BASE_URL/operations/jobs/syncEnumsJob" --data "jobParameters=mantis.username=$MANTIS_USERNAME,mantis.password=$MANTIS_PASSWORD"; echo;
 
 }
 
 function lauchSyncProjects {
 
-	echo "Launch syncProjectsJob with parameters username=$MANTIS_USERNAME, password=$MANTIS_PASSWORD, project_id=$MANTIS_PROJECT_ID"
+	echo "[INFO] Launch syncProjectsJob with parameters username=$MANTIS_USERNAME, project_id=$MANTIS_PROJECT_ID"
 
-	curl --silent -X POST "$BASE_URL/operations/jobs/syncProjectsJob" --data "jobParameters=mantis.username=$MANTIS_USERNAME,mantis.password=$MANTIS_PASSWORD,mantis.project_id=$MANTIS_PROJECT_ID" > /dev/null
+	curl --silent --show-error -X POST "$BASE_URL/operations/jobs/syncProjectsJob" --data "jobParameters=mantis.username=$MANTIS_USERNAME,mantis.password=$MANTIS_PASSWORD,mantis.project_id=$MANTIS_PROJECT_ID"; echo;
 
 }
 
 function lauchSyncIssues {
 
-	echo "Launch syncIssuesJob with parameters username=$MANTIS_USERNAME, password=$MANTIS_PASSWORD, project_id=$MANTIS_PROJECT_ID"
+	echo "[INFO] Launch syncIssuesJob with parameters username=$MANTIS_USERNAME, project_id=$MANTIS_PROJECT_ID"
 
-	curl --silent -X POST "$BASE_URL/operations/jobs/syncIssuesJob" --data "jobParameters=mantis.username=$MANTIS_USERNAME,mantis.password=$MANTIS_PASSWORD,mantis.project_id=$MANTIS_PROJECT_ID" > /dev/null
+	curl --silent --show-error -X POST "$BASE_URL/operations/jobs/syncIssuesJob" --data "jobParameters=mantis.username=$MANTIS_USERNAME,mantis.password=$MANTIS_PASSWORD,mantis.project_id=$MANTIS_PROJECT_ID"; echo;
 
 }
 
