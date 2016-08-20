@@ -10,7 +10,7 @@ RUN apk add -U wget tar ca-certificates && \
 	rm -rf /var/cache/apk/*
 
 
-ENV MANTIS_SYNC_CORE_VERSION 1.0.3-RELEASE
+ENV MANTIS_SYNC_CORE_VERSION 1.0.4-RELEASE
 
 RUN chmod +x ./entry-point.sh && \
 	sync && \
